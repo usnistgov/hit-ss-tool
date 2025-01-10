@@ -1,0 +1,17 @@
+.settings/
+target/
+
+# Windows
+Thumbs.db 
+Desktop.ini
+
+# OSX
+.DS_Store
+
+#Eclipse
+.project
+.metadata
+.classpath
+.settings/
+/pomCaro.xml
+/bin/

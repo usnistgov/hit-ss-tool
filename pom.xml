@@ -1,0 +1,164 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>gov.nist.hit.ss</groupId>
+	<artifactId>hti-ss-tool</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>hit-ss-tool</name>
+	<description>HTI Syndromic Tools</description>
+	<packaging>pom</packaging>
+	<modules>
+		<module>hti-ss-resource-bundle</module>		
+		<module>hti-ss-tool-config</module>
+		<module>hti-ss-message-validation</module>
+		<module>hti-ss-service</module>
+		<module>hti-ss-web</module>
+
+	</modules>
+
+	<properties>
+		<spring.version>4.3.8.RELEASE</spring.version>
+		<hithl7v2.version>1.0.25-SNAPSHOT</hithl7v2.version>
+		<core.version>1.0.48</core.version>
+		<java.version>1.8</java.version>		
+		
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>gov.nist.hit.core.hl7v2</groupId>
+			<artifactId>hit-core-hl7v2-service</artifactId>
+			<version>${hithl7v2.version}</version>			
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.xml.ws</groupId>
+			<artifactId>jaxws-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.messaging.saaj</groupId>
+			<artifactId>saaj-impl</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+			  
+	<dependency>
+        <groupId>org.glassfish.metro</groupId>
+        <artifactId>webservices-rt</artifactId>
+        <version>2.4.4</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.metro</groupId>
+        <artifactId>webservices-api</artifactId>
+        <version>2.4.4</version>
+    </dependency>
+			
+	</dependencies>
+
+
+
+	<build>
+		<pluginManagement>
+			<plugins>
+
+
+				<!-- plugin to handle compile version -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.5.1</version>
+					<configuration>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.9</version>
+					<configuration>
+						<additionalProjectnatures>
+							<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+						</additionalProjectnatures>
+						<additionalBuildcommands>
+							<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+						</additionalBuildcommands>
+						<downloadSources>true</downloadSources>
+						<downloadJavadocs>true</downloadJavadocs>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5.3</version>
+					<configuration>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+						<releaseProfiles>release</releaseProfiles>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.apache.maven.scm</groupId>
+							<artifactId>maven-scm-api</artifactId>
+							<version>1.9.2</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.maven.scm</groupId>
+							<artifactId>maven-scm-provider-gitexe</artifactId>
+							<version>1.9.2</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-compiler-plugin
+										</artifactId>
+										<versionRange>
+											[2.5.1,)
+										</versionRange>
+										<goals>
+											<goal>testCompile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<url>https://hit-nexus.nist.gov/repository/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Internal Snapshots</name>
+			<url>https://hit-nexus.nist.gov/repository/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<scm>
+		<connection>scm:git:https://github.com/usnistgov/hit-ss-tool.git</connection>
+		<url>scm:git:https://github.com/usnistgov/hit-ss-tool.git</url>
+		<developerConnection>scm:git:https://github.com/usnistgov/hit-ss-tool.git</developerConnection>
+     </scm>
+  
+</project>

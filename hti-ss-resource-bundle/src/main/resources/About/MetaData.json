@@ -1,0 +1,16 @@
+{
+	"domains": [
+		{
+			"key": "default",
+			"position": 1,
+			"rsbVersion": "${project.version}-${ts}",
+			"version": "1.7.1",
+			"igVersion": "",
+			"scope": "GLOBAL",
+			"name": "HL7v2 Syndromic Surveillance Test Suite",
+			"homeTitle": "Welcome to the NIST Syndromic Surveillance Suite!",
+			"authorUsername": "nico"
+		}
+	]
+}
+
