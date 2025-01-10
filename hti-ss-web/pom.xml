@@ -56,6 +56,13 @@
 			<artifactId>hti-ss-resource</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>gov.nist.hit.ss</groupId>
+			<artifactId>hti-ss-config</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+ 
  
 		<dependency>
 			<groupId>javax.servlet</groupId>

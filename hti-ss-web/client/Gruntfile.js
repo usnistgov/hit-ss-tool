@@ -122,6 +122,7 @@ module.exports = function (grunt) {
           }
         }
       },
+      
       dist: {
         options: {
           base: '<%= yeoman.dist %>'
@@ -252,7 +253,7 @@ module.exports = function (grunt) {
       options: {
         dest: '<%= yeoman.dist %>'
       }
-    },
+    },	
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
@@ -313,6 +314,7 @@ module.exports = function (grunt) {
     // Allow the use of non-minsafe AngularJS files. Automatically makes it
     // minsafe compatible so Uglify does not destroy the ng references
     ngmin: {
+	
       dist: {
         files: [
           {
@@ -324,13 +326,16 @@ module.exports = function (grunt) {
         ]
       }
     },
+    uglify: {
+	    options: {
+	      mangle: false,
+	      beautify: true,
+		  compress: false
+	    }
+  	},
 
     // Replace Google CDN references
-    cdnify: {
-      dist: {
-        html: ['<%= yeoman.dist %>/*.html']
-      }
-    },
+    
 
     // Copies remaining files to places other tasks can use
     copy: {
@@ -479,9 +484,8 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'autoprefixer',
     'concat',
-    'ngmin',
+	
     'copy:dist',
-    'cdnify',
     'cssmin',
     'uglify',
     'rev',

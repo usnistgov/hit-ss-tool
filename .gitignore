@@ -7,9 +7,12 @@ hti-ss-resource-bundle/.settings
 hti-ss-resource-bundle/target
 hti-ss-tool-config/.settings
 hti-ss-tool-config/target
+hti-ss-service/.settings
+hti-ss-service/target
 hti-ss-web/.settings
 hti-ss-web/target
 Hti-ss-web/client/app/bower_components
 hti-ss-web/client/.sass-cache
 hti-ss-web/client/.tmp
 hti-ss-web/client/node_modules
+hti-ss-web/src
