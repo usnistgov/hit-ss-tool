@@ -1,7 +1,7 @@
 {
 	"domains": [
 		{
-			"key": "default",
+			"key": "ss-2015",
 			"position": 1,
 			"rsbVersion": "${project.version}-${ts}",
 			"version": "1.7.1",
