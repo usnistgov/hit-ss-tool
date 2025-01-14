@@ -10,6 +10,17 @@
 			"name": "HL7v2 Syndromic Surveillance Test Suite",
 			"homeTitle": "Welcome to the NIST Syndromic Surveillance Suite!",
 			"authorUsername": "nico"
+		},
+		{
+			"key": "ss-svap",
+			"position": 2,
+			"rsbVersion"	:"1.0.0",
+    		"version"		: "1.0.0",
+    		"igVersion"		:"1.0.0",
+			"scope": "GLOBAL",
+			"name": "HL7v2 HTI-1 SVAP Syndromic Surveillance Test Suite",
+			"homeTitle": "Welcome to the NIST HTI-1 SVAP Syndromic Surveillance Suite!",
+			"authorUsername": "nico"
 		}
 	]
 }

@@ -7,7 +7,29 @@ angular.module('main').controller('MainCtrl',
         $rootScope.loginDialog = null;
         $rootScope.started = false;
 
-        var domainParam = $location.search()['d'] ? decodeURIComponent($location.search()['d']) : null;
+		$scope.isMainPage= function(){			
+				return !$location.url().includes("/ss-2015") && !$location.url().includes("/ss-svap");
+					
+			};
+			
+			
+			$scope.setDisplayApp = function (val) {
+			           $scope.displayApp = val;
+			};
+			
+			$scope.changeDomain = function (domain){
+				if(domain === "ss-2015"){
+					$location.path("/ss-2015");
+				}else if(domain === "ss-svap"){
+					$location.path("/ss-svap");	
+				}
+				
+			}
+			
+
+			$scope.displayApp = false;
+		
+		var domainParam = $location.search()['d'] ? decodeURIComponent($location.search()['d']) : null;
 
 
         $scope.language = function () {

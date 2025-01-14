@@ -1,9 +1,11 @@
 package gov.nist.healthcare.mu.ss.custom;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import hl7.v2.instance.Element;
 import hl7.v2.instance.Query;
 import hl7.v2.instance.Simple;
-import org.apache.log4j.Logger;
 import scala.collection.Iterator;
 import scala.collection.immutable.List;
 
@@ -14,8 +16,8 @@ public class SS_017_NO_ACK {
     private String MSH21_3 = "2.16.840.1.114222.4.10.3";
     private String MSH21_4 = "ISO";
 
-    private static Logger logger = Logger.getLogger(SS_017_NO_ACK.class.getName());
-
+    protected static final Logger logger = LogManager.getLogger();
+    
     public boolean assertion(hl7.v2.instance.Element e) {
         List<Element> MSH21_List = Query.query(e, "1[1].21[*]").get();
         Iterator<Element> it = MSH21_List.iterator();
