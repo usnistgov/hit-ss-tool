@@ -1,26 +1,35 @@
 services:
   tomcat:
     image:  tomcat:9.0.98-jdk8-temurin-noble
+    build:
+      context: ./
+      dockerfile: ./dockerConfigs/webapp/Dockerfile    
     ports:
       - "8888:8080"
-    volumes:
-      - ./hti-ss-web/target/ss-tool.war:/usr/local/tomcat/webapps/ss-tool.war
-      - ./dockerConfigs/context.xml:/usr/local/tomcat/conf/context.xml
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
+        restart: true
     environment:
       - JAVA_OPTS=-Xmx4096m -Xms4096m
     links:
       - mysql:container-mysql
     command: bash -c "rm -rf /usr/local/tomcat/webapps.dist && catalina.sh run"
+    restart: always
 
   mysql:
     image: mysql:8.1
+    build:
+      context: ./
+      dockerfile: ./dockerConfigs/mysql/Dockerfile
     ports:
       - "3309:3306"
     environment:
-      - MYSQL_ROOT_PASSWORD=root_password
-    volumes:
-      - ./dockerConfigs/mysql:/docker-entrypoint-initdb.d/:rw
-      # - ./dockerConfigs/dbSetup.sql:/data/application/dbSetup.sql    
-      # command: --init-file /data/application/dbSetup.sql
+      - MYSQL_ROOT_PASSWORD=root_password    
+    healthcheck:
+      test: ["CMD", 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD' ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s  
+    
